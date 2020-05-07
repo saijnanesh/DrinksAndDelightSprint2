@@ -1,0 +1,46 @@
+<div class="containerfluid">
+  <table class="table table-hover">
+      <thead>
+          <tr>
+              <th id="orderId">Product Id</th>
+              <th id="name">Product Name</th>
+              <th id="distributorId">DistributorId</th>
+              <th id="quantityValue">Quantity Value</th>
+              <th id="quantityUnit">Quantity Unit</th>
+              <th id="pricePerUnit">Price Per Unit</th>
+              <th id="totalPrice">Total Price</th>
+              <th id="location">Location</th>
+              <th id="dateOfOrder">Date Of Order</th>
+              <th id="dateOfDelivery">Date Of Delivery</th>
+              <th id="deliveryStatus">Delivery Status</th>
+              </tr>
+      </thead>
+
+      <tbody>
+          <tr *ngFor="let item of orderDto">
+              <td>{{item.orderId}}</td>
+              <td>{{item.name}}</td>
+              <td>{{item.distributorId}}</td>
+              <td>{{item.quantityValue}}</td>
+              <td>{{item.quantityUnit}}</td>
+              <td>{{item.pricePerUnit}}</td>
+              <td>{{item.totalPrice}}</td>
+              <td>{{item.location}}</td>
+              <td>{{item.dateOfOrder}}</td>
+              <td>{{item.dateOfDelivery}}</td>
+              <td>{{item.deliveryStatus}}</td>
+              <td><button type="button" (click)="updateOrder(item.orderId)" class="btn btn-primary"
+                      mat-raised-button>Update Order</button></td>
+              <td><button type="button" (click)="deleteOrder(item.orderId)"
+                      class="btn btn-danger">Cancle order</button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+
+
+
+
+
+      

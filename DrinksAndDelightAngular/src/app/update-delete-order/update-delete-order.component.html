@@ -1,0 +1,84 @@
+<div class="container">
+  <form name="myForm" #myForm="ngForm" (ngSubmit)="updateProduct()" class="form-horizontal">
+
+      <div class="form-group">
+        <label for="orderId" class="control-label col-sm-2">order Id:</label>
+        <div class="col-sm-10">
+            <input type="number" #orderId="ngModel" name="orderId" [(ngModel)]="orderDto.orderId" required
+                class="form-control" readonly />
+        </div>
+    </div>
+
+
+      <div class="form-group">
+        <label for="name" class="control-label col-sm-2">Product Name:</label>
+        <div class="col-sm-10">
+          <input type="text" #name="ngModel" name="name" [(ngModel)]="orderDto.name" required
+            placeholder="Enter Product Name" class="form-control"
+            [class.is-invalid]="name.invalid && name.touched" pattern="^[a-zA-z]+([\s][a-zA-Z]+)*$"/>
+          <div class="alert alert-danger" *ngIf="name.invalid && name.touched">
+            <h5 class="text-danger" *ngIf="name.errors?.required">Product Name is required</h5>
+            <h5 class="text-danger" *ngIf="name.errors?.pattern">Product Name invalid</h5>
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="distributorId" class="control-label col-sm-2">Product DistributorId:</label>
+        <div class="col-sm-10">
+          <select class="custom-select" #distributorId="ngModel" name="distributorId"
+            [(ngModel)]="orderDto.distributorId">
+            <option value="dis01" selected>dis01</option>
+            <option value="dis02">dis02</option>
+            <option value="dis03">dis03</option>
+            <option value="dis04">dis04</option>
+            <option value="dis05">dis05</option>
+          </select>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="quantityValue" class="control-label col-sm-2">Quantity Value:</label>
+        <div class="col-sm-10">
+          <input type="number" #quantityValue="ngModel" name="quantityValue" [(ngModel)]="orderDto.quantityValue" required
+            placeholder="Enter Product quantityValue" class="form-control"
+            [class.is-invalid]="quantityValue.invalid && quantityValue.touched" pattern="^[1-9]\d*$" />
+          <div class="alert alert-danger" *ngIf="quantityValue.invalid && quantityValue.touched">
+            <h5 class="text-danger" *ngIf="quantityValue.errors?.required">Product quantityValue is required</h5>
+            <h5 class="text-danger" *ngIf="quantityValue.errors?.pattern">Product quantityValue range invalid</h5>
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="quantityUnit" class="control-label col-sm-2">Product quantityUnit:</label>
+        <div class="col-sm-10">
+          <input type="number" #quantityUnit="ngModel" name="quantityUnit"
+            [(ngModel)]="orderDto.quantityUnit" required placeholder="Enter Product quantityUnit"
+            class="form-control" [class.is-invalid]="quantityUnit.invalid && quantityUnit.touched" pattern="^[1-9]\d*$"/>
+          <div class="alert alert-danger" *ngIf="quantityUnit.invalid && quantityUnit.touched">
+            <h5 class="text-danger" *ngIf="quantityUnit.errors?.required">Product quantityUnit is required</h5>
+            <h5 class="text-danger" *ngIf="quantityUnit.errors?.pattern">Product quantityUnit invalid</h5>
+          </div>
+        </div>
+      </div>
+  
+  
+      <div class="form-group">
+        <label for="totalPrice" class="control-label col-sm-2">Product Total Price:</label>
+        <div class="col-sm-10">
+            <input type="number" #totalPrice="ngModel" name="totalPrice" [(ngModel)]="orderDto.totalPrice"
+            [value] = "orderDto.quantityUnit * orderDto.pricePerUnit" required
+                class="form-control" readonly />
+        </div>
+    </div>
+   
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" [disabled]="myForm.form.invalid" class="btn btn-success" type="submit">
+            Update</button>
+        </div>
+      </div>
+    </form>
+  </div>

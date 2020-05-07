@@ -1,0 +1,35 @@
+<div class="containerfluid">
+  <table class="table table-hover">
+      <thead>
+          <tr>
+              <th id="rmsId">Rms Id</th>
+              <th id="name">RawMaterial Name</th>
+              <th id="pricePerUnit">Price Per Unit</th>
+              <th id="description">description</th>
+              <th id="quantityValue">Quantity Value</th>
+              <th id="quantityUnit">Quantity Unit</th>
+              <th>Order Now</th>
+              </tr>
+      </thead>
+
+      <tbody>
+          <tr *ngFor="let item of specDto">
+              <td>{{item.rmsId}}</td>
+              <td>{{item.name}}</td>
+              <td>{{item.pricePerUnit}}</td>
+              <td>{{item.description}}</td>
+              <td>{{item.quantityValue}}</td>
+              <td>{{item.quantityUnit}}</td>
+              <td><button type="button" (click)="placeOrder()" class="btn btn-primary"
+                mat-raised-button>Place order</button></td>
+       
+          </tr>
+      </tbody>
+  </table>
+</div>
+
+
+
+
+
+      
